@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "main": "public/electron.js",
+  "author": {
+    "name": "HUORT Louis",
+    "email": "louis@huort.com",
+    "url": "https://huort.com"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -19,8 +24,8 @@
     "eject": "react-scripts eject",
     "dev": "concurrently -k \"BROWSER=none npm start\" \"npm:electron\"",
     "electron": "wait-on tcp:3000 && electron .",
-    "build-electron": "electron-builder build --win --publish never",
-    "deploy": "electron-builder build --win --publish always"
+    "build-electron": "electron-builder build --win --linux deb tar.xz --publish never",
+    "deploy": "electron-builder build --win --linux deb tar.xz --publish always"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +48,7 @@
   "devDependencies": {
     "concurrently": "^7.5.0",
     "electron": "^21.2.0",
+    "electron-builder": "^23.6.0",
     "electron-is-dev": "^2.0.0",
     "wait-on": "^6.0.1"
   },
