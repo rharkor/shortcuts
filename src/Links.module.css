@@ -1,0 +1,12 @@
+main {
+    flex: 1;
+}
+
+.card {
+    transition: all ease-in-out 0.2s;
+}
+
+.card:hover {
+    cursor: pointer;
+    transform: translateY(3px);
+}

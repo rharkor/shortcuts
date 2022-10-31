@@ -1,6 +1,6 @@
 const path = require("path");
 
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, shell, ipcMain } = require("electron");
 const isDev = require("electron-is-dev");
 
 function createWindow() {
@@ -10,6 +10,7 @@ function createWindow() {
     height: 600,
     webPreferences: {
       nodeIntegration: true,
+      contextIsolation: false,
     },
   });
 
@@ -44,4 +45,14 @@ app.on("activate", () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
+});
+
+ipcMain.on("openLink", (event, data) => {
+  shell.openExternal(data);
+});
+
+ipcMain.on("openLinks", (event, data) => {
+  JSON.parse(data).forEach((link) => {
+    shell.openExternal(link);
+  });
 });
